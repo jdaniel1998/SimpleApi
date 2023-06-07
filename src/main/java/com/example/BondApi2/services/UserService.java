@@ -49,8 +49,16 @@ public class UserService {
     }
 
     public List<User> findAll() {
+
         List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);
+
+        userRepository.findAll().forEach(
+                user -> {
+                    user.setJid("JID");//TODO JID creation logic
+                    user.setImage_url("ImageURL");//TODO ImageUrl creation logic
+                    users.add(user);
+                }
+        );
         return users;
     }
 
